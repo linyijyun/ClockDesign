@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+
+#clock{
+     margin: 0 auto;
+     width: 300px;
+     height: 300px;
+     border-radius: 50%;
+     background: pink;
+     position: relative ;
+     top: 50%;
+     border: 0px solid rgb(0, 0, 0);
+     box-shadow: 0px 0px 55px -10px #fb1a92;
+     
+ }
+ #hour{
+     height: 5px;
+     width: 20%;
+     background: rgb(255, 236, 228);
+     position: absolute;
+     top: 50%;
+     left: 30%;
+     transform-origin: right center;
+     box-shadow:0 0 5px 3px rgb(255, 236, 228);
+ }
+ #minute{
+     height: 5px;
+     width: 50%;
+     background: rgb(255, 236, 228);
+     position: absolute;
+     top: 50%;
+     left: 0%;
+     transform-origin: right center;
+     box-shadow:0 0 5px 3px rgb(255, 236, 228);
+ }
+ #second{
+     height: 5px;
+     width: 50%;
+     background: rgb(255, 236, 228);
+     position: absolute;
+     top: 50%;
+     left: 0%;
+     transform-origin: right center;
+     box-shadow:0 0 5px 3px rgb(255, 236, 228);
+ }
+ body{
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     background-size: cover;
+     background-position:center;
+     background-image:linear-gradient(rgba(233, 102, 193, 0.514), rgba(255, 236, 228, 0.7)), url(567.jpg);
+ }
+ #jump{
+            width: 400px;
+            height: 50px;
+            color: #F8F7F4;
+            font-size: 60px;
+            text-align: center;
+            margin-top:50px;
+            font-family: "Germania One", "Microsoft JhengHei";
+        }
+
+.all{
+            position: absolute;
+            top: calc(50% - 200px);
+            left: calc(50% - 200px);
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="all">
+       <div id="clock">
+		<div id="hour"></div>
+		<div id="minute"></div>
+		<div id="second"></div>
+    </div>
+    <div id="jump"></div>
+    </div>
+    <script>
+            const hour = document.getElementById("hour");
+            const minute = document.getElementById("minute");
+            const second = document.getElementById("second");
+            const digit = document.getElementById("jump");
+            updateTime();
+            setInterval(updateTime,1000);
+    
+            function updateTime(){
+                let date = new Date();
+                    let s =  date.getSeconds();
+                    let m = date.getMinutes();
+                    let h = date.getHours();
+                    jump.innerText = addZero(h)+" : "+addZero(m)+" : "+addZero(s);
+                    second.style.transform = transform60(s);
+                    minute.style.transform = transform60(m);
+                    hour.style.transform = transform12(h);
+            }
+            function addZero(num){
+                return ((num<10)?("0"+num):num)
+            }
+            function transform12(num){
+                return `rotate(${num*30+90}deg)`;
+            }
+            function transform60(num){
+                return `rotate(${num*6+90}deg)`;
+            }   
+        </script>
+</body>
+</html>
